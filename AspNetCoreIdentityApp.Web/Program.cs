@@ -14,7 +14,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddIdentityWithExt();
 
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    var cookieBuilder = new CookieBuilder();
 
+    cookieBuilder.Name = "UdemyAppCookie";
+
+    opt.LoginPath = new PathString("/Home/SignIn");
+    opt.LogoutPath = new PathString("/Member/Logout");
+    opt.Cookie = cookieBuilder;
+    opt.ExpireTimeSpan = TimeSpan.FromDays(60);
+    opt.SlidingExpiration = true;
+});
 
 
 var app = builder.Build();
@@ -31,7 +42,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

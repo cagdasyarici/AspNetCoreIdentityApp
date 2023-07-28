@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+@model SignInViewModel
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2>Kullanıcı Giriş Formu</h2>
+        <div asp-validation-summary=ModelOnly class="alert alert-danger"></div>
+        <form asp-controller="Home" asp-action="SignIn" asp-route-returnUrl="@Context.Request.Query["returnUrl"]" method="post">
+            <div class="mb-3">
+                <label for="Email" class="col-md-4" asp-for="Email"></label>
+                <div class="col-md-8">
+                    <input asp-for=Email type="email" class="form-control">
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" for="Password" class="col-md-4" for="exampleInputPassword1" asp></label>
+                <div class="col-md-8">
+                    <input asp-for=Password type="password" class="form-control">
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>
+            </div>
+            <div class="mb-3 ">
+                
+                <input class="form-check-input" asp-for="RememberMe">
+                <label class="form-check-label" asp-for="RememberMe">Beni Hatırla</label>
+                
+            </div>
+            <button type="submit" class="btn btn-primary">Uye Giriş</button>
+        </form>
+    </div>
+</div>
+    
+
+
+
