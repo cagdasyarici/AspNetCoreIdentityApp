@@ -17,7 +17,7 @@ namespace AspNetCoreIdentityApp.Web.CustomValidations
                 errors.Add(new() { Code = "PasswordContain1234", Description = "Şifre alanı ardışık sayı içeremez" });
             }
 
-            if (!errors.Any()) 
+            if (errors.Any()) 
             {
                 return Task.FromResult(IdentityResult.Failed(errors.ToArray()));
             }
