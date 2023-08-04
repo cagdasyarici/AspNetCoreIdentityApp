@@ -1,0 +1,100 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model UserEditViewModel
+@section Scripts
+    {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2>Kullanıcı Güncelleme</h2>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-info" role="alert">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <div asp-validation-summary=ModelOnly class="alert alert-danger"></div>
+
+        <form asp-controller="Member" asp-action="UserEdit" method="post">
+
+
+
+            <div class="row mb-3">
+                <label asp-for=UserName class="col-md-4" for="exampleInputPassword1" asp></label>
+                <div class="col-md-8">
+                    <input asp-for=UserName type="text" class="form-control">
+                    <span class="text-danger" asp-validation-for="UserName"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="Email" class="col-md-4" asp-for="Email"></label>
+                <div class="col-md-8">
+                    <input asp-for=Email type="text" class="form-control">
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+
+            </div>
+            <div class="row mb-3">
+                <label for="Phone" class="col-md-4" asp-for="Phone"></label>
+                <div class="col-md-8">
+                    <input asp-for=Phone type="text" class="form-control">
+                    <span class="text-danger" asp-validation-for="Phone"></span>
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+                <label for="BirthDate" class="col-md-4" asp-for="BirthDate"></label>
+                <div class="col-md-8">
+                    <input asp-for=BirthDate type="text" class="form-control">
+                    <span class="text-danger" asp-validation-for="BirthDate"></span>
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+                <label for="City" class="col-md-4" asp-for="City"></label>
+                <div class="col-md-8">
+                    <input asp-for=City type="text" class="form-control">
+                    <span class="text-danger" asp-validation-for="City"></span>
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+                <label for="Gender" class="col-md-4" asp-for="Gender"></label>
+                <div class="col-md-8">
+                    <select class="form-control" asp-for="Gender" asp-items="ViewBag.genderList">
+                        <option value="">Cinsiyet Seçiniz...</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Gender"></span>
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+                <label for="Picture" class="col-md-4" asp-for="Picture"></label>
+                <div class="col-md-8">
+                    <input asp-for=Picture type="file" class="form-control">
+                    <span class="text-danger" asp-validation-for="Picture"></span>
+                </div>
+
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-md-8 offset-md-4">
+                    <button type="submit" class="btn btn-primary">Kullanıcı Güncelle</button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

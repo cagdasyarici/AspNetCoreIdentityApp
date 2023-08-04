@@ -30,8 +30,8 @@ namespace AspNetCoreIdentityApp.Web.Areas.Admin.Controllers
             var userViewModelList = userList.Select(x => new UserViewModel()
             {
                 Id = x.Id,
-                Email = x.Email,
-                UserName = x.UserName
+                Email = x.Email!,
+                UserName = x.UserName!
             }).ToList();
 
             return View(userViewModelList);
